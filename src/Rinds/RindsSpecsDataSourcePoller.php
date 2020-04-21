@@ -15,10 +15,9 @@ defined( 'ABSPATH' ) || exit;
  * stores the specs in to the database as an option.
  */
 class RindsSpecsDataSourcePoller {
-	const DATA_SOURCES      = array(
+	const DATA_SOURCES = array(
 		'http://two.wordpress.test/rinds-specs.json',
 	);
-	const SPECS_OPTION_NAME = 'wc_rinds_specs';
 
 	/**
 	 * Polls the data sources for specs, persists those specs, and delete any
@@ -33,15 +32,16 @@ class RindsSpecsDataSourcePoller {
 		}
 
 		// Persist the specs as an option.
-		$existing_option = get_option( self::SPECS_OPTION_NAME );
+		$existing_option = get_option( RindsEngine::SPECS_OPTION_NAME );
 
 		if ( false === $existing_option ) {
-			add_option( self::SPECS_OPTION_NAME, $specs );
+			add_option( RindsEngine::SPECS_OPTION_NAME, $specs );
 		} else {
-			update_option( self::SPECS_OPTION_NAME, $specs );
+			update_option( RindsEngine::SPECS_OPTION_NAME, $specs );
 		}
 
-		// @todo This should probably be done in a seperate scheduled task.
+		// Run the RINDS engine.
+		// @todo Break this out into it's own scheduled task.
 		RindsEngine::run();
 	}
 

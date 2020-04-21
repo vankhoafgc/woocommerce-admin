@@ -21,8 +21,7 @@ class RindsEngine {
 	const SPECS_META_OPTION_NAME = 'wc_rinds_specs_meta';
 
 	/**
-	 * Go through the RINDS spec and run those specs that are able to be
-	 * triggered.
+	 * Go through the RINDS specs and run them.
 	 */
 	public static function run() {
 		$specs = get_option( self::SPECS_OPTION_NAME );
