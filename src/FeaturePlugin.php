@@ -191,7 +191,6 @@ class FeaturePlugin {
 		new WC_Admin_Notes_Install_JP_And_WCS_Plugins();
 
 		// Initialize RindsEngine.
-		// TEST
 		RindsEngine::init();
 	}
 
