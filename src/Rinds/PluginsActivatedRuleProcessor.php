@@ -26,10 +26,11 @@ class PluginsActivatedRuleProcessor {
 	 * Process the rule.
 	 *
 	 * @param object $rule The specific rule being processed by this rule processor.
+	 * @param object $data RINDS data.
 	 *
 	 * @return bool Whether the rule passes or not.
 	 */
-	public function process( $rule ) {
+	public function process( $rule, $data ) {
 		if ( 0 === count( $rule->plugins ) ) {
 			return false;
 		}

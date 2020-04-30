@@ -17,10 +17,11 @@ class FailRuleProcessor {
 	 * Fails the rule.
 	 *
 	 * @param object $rule The specific rule being processed by this rule processor.
+	 * @param object $data RINDS data.
 	 *
 	 * @return bool Always false.
 	 */
-	public function process( $rule ) {
+	public function process( $rule, $data ) {
 		return false;
 	}
 }

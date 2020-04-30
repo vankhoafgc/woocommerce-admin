@@ -57,6 +57,8 @@ class GetRuleProcessor {
 				return new PluginVersionRuleProcessor(
 					new PluginsProvider()
 				);
+			case 'rinds_data':
+				return new RindsDataRuleProcessor();
 		}
 
 		return new FailRuleProcessor();
