@@ -29,11 +29,15 @@ class EvaluateAndGetStatus {
 	 *
 	 * @param array  $spec           The spec to evaluate.
 	 * @param string $current_status The note's current status.
+	 * @param object $data           RINDS data.
 	 *
 	 * @return string The evaluated status.
 	 */
-	public function evaluate( $spec, $current_status ) {
-		$evaluate_result = $this->rule_evaluator->evaluate( $spec->rules );
+	public function evaluate( $spec, $current_status, $data ) {
+		$evaluate_result = $this->rule_evaluator->evaluate(
+			$spec->rules,
+			$data
+		);
 
 		// Preunactioned notes should be the spec status if the spec passes,
 		// left alone otherwise.

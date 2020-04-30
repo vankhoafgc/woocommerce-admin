@@ -26,10 +26,11 @@ class PublishAfterTimeRuleProcessor {
 	 * Process the rule.
 	 *
 	 * @param object $rule The specific rule being processed by this rule processor.
+	 * @param object $data RINDS data.
 	 *
 	 * @return bool Whether the rule passes or not.
 	 */
-	public function process( $rule ) {
+	public function process( $rule, $data ) {
 		return $this->date_time_provider->get_now() >= new \DateTime( $rule->publish_after );
 	}
 }

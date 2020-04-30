@@ -19,8 +19,9 @@ class SpecRunner {
 	 * Run the spec.
 	 *
 	 * @param object $spec The spec to run.
+	 * @param object $data RINDS data.
 	 */
-	public static function run_spec( $spec ) {
+	public static function run_spec( $spec, $data ) {
 		$data_store = \WC_Data_Store::load( 'admin-note' );
 
 		// Create or update the note.
@@ -40,7 +41,8 @@ class SpecRunner {
 		);
 		$status                  = $evaluate_and_get_status->evaluate(
 			$spec,
-			$note->get_status()
+			$note->get_status(),
+			$data
 		);
 
 		// Get the matching locale or fall back to en-US.
