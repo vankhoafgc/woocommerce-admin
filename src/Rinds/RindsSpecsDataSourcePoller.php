@@ -32,16 +32,9 @@ class RindsSpecsDataSourcePoller {
 		}
 
 		// Persist the specs as an option.
-		$existing_option = get_option( RindsEngine::SPECS_OPTION_NAME );
-
-		if ( false === $existing_option ) {
-			add_option( RindsEngine::SPECS_OPTION_NAME, $specs );
-		} else {
-			update_option( RindsEngine::SPECS_OPTION_NAME, $specs );
-		}
+		update_option( RindsEngine::SPECS_OPTION_NAME, $specs );
 
 		// Run the RINDS engine.
-		// @todo Break this out into it's own scheduled task.
 		RindsEngine::run();
 	}
 
