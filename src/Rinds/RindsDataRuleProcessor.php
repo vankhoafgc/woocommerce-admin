@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class RindsDataRuleProcessor {
 	/**
-	 * Performs an OR operation on the rule's left and right operands.
+	 * Performs a comparison operation against a value in the $data object.
 	 *
 	 * @param object $rule The specific rule being processed by this rule processor.
 	 * @param object $data RINDS data.
@@ -30,18 +30,19 @@ class RindsDataRuleProcessor {
 
 		$operand = $data->{$rule->index};
 
-		if ( '=' === $rule->operation ) {
-			return $operand === $rule->value;
-		} elseif ( '<' === $rule->operation ) {
-			return $operand < $rule->value;
-		} elseif ( '<=' === $rule->operation ) {
-			return $operand <= $rule->value;
-		} elseif ( '>' === $rule->operation ) {
-			return $operand > $rule->value;
-		} elseif ( '>=' === $rule->operation ) {
-			return $operand >= $rule->value;
-		} elseif ( '!=' === $rule->operation ) {
-			return $operand !== $rule->value;
+		switch ( $rule->operation ) {
+			case '=':
+				return $operand === $rule->value;
+			case '<':
+				return $operand < $rule->value;
+			case '<=':
+				return $operand <= $rule->value;
+			case '>':
+				return $operand > $rule->value;
+			case '>=':
+				return $operand >= $rule->value;
+			case '!=':
+				return $operand !== $rule->value;
 		}
 
 		return false;
