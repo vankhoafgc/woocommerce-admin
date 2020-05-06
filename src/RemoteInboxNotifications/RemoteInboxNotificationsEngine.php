@@ -59,7 +59,8 @@ class RindsEngine {
 
 		if ( false === $data ) {
 			$data                         = new \stdClass();
-			$data->there_were_no_products = ! ProductsProvider::are_there_products();
+			$products_provider            = new ProductsProvider();
+			$data->there_were_no_products = ! $products_provider->are_there_products();
 			$data->there_are_now_products = ! $data->there_were_no_products;
 
 			add_option( self::DATA_OPTION_NAME, $data );
@@ -96,7 +97,8 @@ class RindsEngine {
 		// phpcs:enable
 
 		$data                         = self::get_data();
-		$data->there_are_now_products = ProductsProvider::are_there_products();
+		$products_provider            = new ProductsProvider();
+		$data->there_are_now_products = $products_provider->are_there_products();
 		update_option( self::DATA_OPTION_NAME, $data );
 
 		self::run();
@@ -120,7 +122,8 @@ class RindsEngine {
 		}
 
 		$data                         = self::get_data();
-		$data->there_are_now_products = ProductsProvider::are_there_products();
+		$products_provider            = new ProductsProvider();
+		$data->there_are_now_products = $products_provider->are_there_products();
 		update_option( self::DATA_OPTION_NAME, $data );
 
 		self::run();
