@@ -28,23 +28,10 @@ class RindsDataRuleProcessor {
 			return false;
 		}
 
-		$operand = $data->{$rule->index};
-
-		switch ( $rule->operation ) {
-			case '=':
-				return $operand === $rule->value;
-			case '<':
-				return $operand < $rule->value;
-			case '<=':
-				return $operand <= $rule->value;
-			case '>':
-				return $operand > $rule->value;
-			case '>=':
-				return $operand >= $rule->value;
-			case '!=':
-				return $operand !== $rule->value;
-		}
-
-		return false;
+		return ComparisonOperation::compare(
+			$data->{$rule->index},
+			$rule->value,
+			$rule->operation
+		);
 	}
 }
