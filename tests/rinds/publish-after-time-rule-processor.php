@@ -38,7 +38,7 @@ class WC_Tests_Rinds_PublishAfterTimeRuleProcessor extends WC_Unit_Test_Case {
 		);
 		$processor               = new PublishAfterTimeRuleProcessor( $mock_date_time_provider );
 
-		$result = $processor->process( $this->get_rule() );
+		$result = $processor->process( $this->get_rule(), new stdClass() );
 
 		$this->assertEquals( true, $result );
 	}
@@ -55,7 +55,7 @@ class WC_Tests_Rinds_PublishAfterTimeRuleProcessor extends WC_Unit_Test_Case {
 		);
 		$processor               = new PublishAfterTimeRuleProcessor( $mock_date_time_provider );
 
-		$result = $processor->process( $this->get_rule() );
+		$result = $processor->process( $this->get_rule(), new stdClass() );
 
 		$this->assertEquals( true, $result );
 	}
@@ -72,7 +72,7 @@ class WC_Tests_Rinds_PublishAfterTimeRuleProcessor extends WC_Unit_Test_Case {
 		);
 		$processor               = new PublishAfterTimeRuleProcessor( $mock_date_time_provider );
 
-		$result = $processor->process( $this->get_rule() );
+		$result = $processor->process( $this->get_rule(), new stdClass() );
 
 		$this->assertEquals( false, $result );
 	}

@@ -22,10 +22,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			 * Evaluate to true.
 			 *
 			 * @param array $rules The rules to evaluate.
+			 * @param array $data  RINDS data.
 			 *
 			 * @return bool The evaluated result.
 			 */
-			public function evaluate( $rules ) {
+			public function evaluate( $rules, $data ) {
 				return true;
 			}
 		};
@@ -42,10 +43,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			 * Evaluate to false.
 			 *
 			 * @param array $rules The rules to evaluate.
+			 * @param array $data  RINDS data.
 			 *
 			 * @return bool The evaluated result.
 			 */
-			public function evaluate( $rules ) {
+			public function evaluate( $rules, $data ) {
 				return false;
 			}
 		};
@@ -80,7 +82,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_passing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'unactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'unactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'unactioned', $result );
 	}
@@ -97,7 +103,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_failing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'preunactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'preunactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'preunactioned', $result );
 	}
@@ -114,7 +124,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_passing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'snoozed' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'snoozed',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'snoozed', $result );
 	}
@@ -131,7 +145,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_failing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'snoozed' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'snoozed',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'snoozed', $result );
 	}
@@ -148,7 +166,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_passing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'actioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'actioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'unactioned', $result );
 	}
@@ -165,7 +187,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_failing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'actioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'actioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'actioned', $result );
 	}
@@ -182,7 +208,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_passing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'preunactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'preunactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'unactioned', $result );
 	}
@@ -199,7 +229,11 @@ class WC_Tests_Rinds_EvaluateAndGetStatus extends WC_Unit_Test_Case {
 			$this->get_failing_rule_evaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'preunactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'preunactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'preunactioned', $result );
 	}
