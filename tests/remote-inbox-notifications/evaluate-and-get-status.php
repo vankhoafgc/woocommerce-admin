@@ -40,7 +40,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new PassingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'unactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'unactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'unactioned', $result );
 	}
@@ -57,7 +61,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new FailingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'preunactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'preunactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'preunactioned', $result );
 	}
@@ -74,7 +82,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new PassingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'snoozed' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'snoozed',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'snoozed', $result );
 	}
@@ -91,7 +103,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new FailingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'snoozed' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'snoozed',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'snoozed', $result );
 	}
@@ -108,7 +124,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new PassingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'actioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'actioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'unactioned', $result );
 	}
@@ -125,7 +145,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new FailingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'actioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'actioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'actioned', $result );
 	}
@@ -142,7 +166,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new PassingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'preunactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'preunactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'unactioned', $result );
 	}
@@ -159,7 +187,11 @@ class WC_Tests_RemoteInboxNotifications_EvaluateAndGetStatus extends WC_Unit_Tes
 			new FailingRuleEvaluator()
 		);
 
-		$result = $evaluate_and_get_status->evaluate( $spec, 'preunactioned' );
+		$result = $evaluate_and_get_status->evaluate(
+			$spec,
+			'preunactioned',
+			new stdClass()
+		);
 
 		$this->assertEquals( 'preunactioned', $result );
 	}
