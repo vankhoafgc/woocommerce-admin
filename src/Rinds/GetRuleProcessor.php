@@ -59,6 +59,10 @@ class GetRuleProcessor {
 				);
 			case 'rinds_data':
 				return new RindsDataRuleProcessor();
+			case 'product_count':
+				return new ProductCountRuleProcessor(
+					new ProductsProvider()
+				);
 		}
 
 		return new FailRuleProcessor();

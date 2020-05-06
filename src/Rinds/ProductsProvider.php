@@ -19,9 +19,18 @@ class ProductsProvider {
 	 * @return boolean If there are any products.
 	 */
 	public function are_there_products() {
+		return $this->get_product_count() > 0;
+	}
+
+	/**
+	 * Returns the number of products.
+	 *
+	 * @return integer The number of products.
+	 */
+	public function get_product_count() {
 		global $wpdb;
 
-		$count = $wpdb->get_var(
+		return $wpdb->get_var(
 			"
 				SELECT COUNT(*)
 				FROM wp_posts AS posts
@@ -29,7 +38,5 @@ class ProductsProvider {
 				AND posts.post_status = 'publish'
 			"
 		);
-
-		return $count > 0;
 	}
 }
