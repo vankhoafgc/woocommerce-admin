@@ -63,6 +63,10 @@ class GetRuleProcessor {
 				return new ProductCountRuleProcessor(
 					new ProductsProvider()
 				);
+			case 'order_count':
+				return new OrderCountRuleProcessor(
+					new OrdersProvider()
+				);
 		}
 
 		return new FailRuleProcessor();
