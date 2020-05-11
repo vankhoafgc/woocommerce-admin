@@ -18,7 +18,7 @@ use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Onboarding_Email_Marketin
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Personalize_Store;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_WooCommerce_Payments;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Marketing;
-use \Automattic\WooCommerce\Admin\Rinds\RindsSpecsDataSourcePoller;
+use \Automattic\WooCommerce\Admin\RemoteInboxNotifications\DataSourcePoller;
 
 /**
  * WC_Admin_Events Class.
@@ -71,6 +71,6 @@ class Events {
 		WC_Admin_Notes_Personalize_Store::possibly_add_personalize_store_note();
 		WC_Admin_Notes_WooCommerce_Payments::possibly_add_note();
 		WC_Admin_Notes_Marketing::possibly_add_note_intro();
-		RindsSpecsDataSourcePoller::poll_data_sources();
+		DataSourcePoller::poll_data_sources();
 	}
 }
