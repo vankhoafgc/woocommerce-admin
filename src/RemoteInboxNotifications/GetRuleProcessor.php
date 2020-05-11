@@ -59,6 +59,10 @@ class GetRuleProcessor {
 				);
 			case 'data':
 				return new DataRuleProcessor();
+			case 'order_count':
+				return new OrderCountRuleProcessor(
+					new OrdersProvider()
+				);
 		}
 
 		return new FailRuleProcessor();
