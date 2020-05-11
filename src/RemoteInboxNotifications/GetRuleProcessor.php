@@ -59,10 +59,6 @@ class GetRuleProcessor {
 				);
 			case 'data':
 				return new DataRuleProcessor();
-			case 'product_count':
-				return new ProductCountRuleProcessor(
-					new ProductsProvider()
-				);
 		}
 
 		return new FailRuleProcessor();
