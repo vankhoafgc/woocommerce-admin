@@ -19,7 +19,7 @@ use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Onboarding_Payments;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Personalize_Store;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_WooCommerce_Payments;
 use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Marketing;
-use \Automattic\WooCommerce\Admin\Rinds\RindsSpecsDataSourcePoller;
+use \Automattic\WooCommerce\Admin\RemoteInboxNotifications\DataSourcePoller;
 
 /**
  * WC_Admin_Events Class.
@@ -65,6 +65,7 @@ class Events {
 	 */
 	public function do_wc_admin_daily() {
 		WC_Admin_Notes_New_Sales_Record::possibly_add_sales_record_note();
+		WC_Admin_Notes_Giving_Feedback_Notes::add_notes_for_admin_giving_feedback();
 		WC_Admin_Notes_Mobile_App::possibly_add_mobile_app_note();
 		WC_Admin_Notes_Tracking_Opt_In::possibly_add_tracking_opt_in_note();
 		WC_Admin_Notes_Onboarding_Email_Marketing::possibly_add_onboarding_email_marketing_note();
@@ -73,6 +74,6 @@ class Events {
 		WC_Admin_Notes_WooCommerce_Payments::possibly_add_note();
 		WC_Admin_Notes_Marketing::possibly_add_note_intro();
 		WC_Admin_Notes_Giving_Feedback_Notes::add_notes_for_admin_giving_feedback();
-		RindsSpecsDataSourcePoller::poll_data_sources();
+		DataSourcePoller::poll_data_sources();
 	}
 }
