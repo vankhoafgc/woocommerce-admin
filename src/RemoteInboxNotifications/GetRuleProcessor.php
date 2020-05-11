@@ -57,12 +57,8 @@ class GetRuleProcessor {
 				return new PluginVersionRuleProcessor(
 					new PluginsProvider()
 				);
-			case 'rinds_data':
-				return new RindsDataRuleProcessor();
-			case 'product_count':
-				return new ProductCountRuleProcessor(
-					new ProductsProvider()
-				);
+			case 'data':
+				return new DataRuleProcessor();
 			case 'order_count':
 				return new OrderCountRuleProcessor(
 					new OrdersProvider()
