@@ -59,6 +59,10 @@ class GetRuleProcessor {
 				);
 			case 'data':
 				return new DataRuleProcessor();
+			case 'wcadmin_active_for':
+				return new WCAdminActiveForRuleProcessor(
+					new WCAdminActiveForProvider()
+				);
 		}
 
 		return new FailRuleProcessor();
