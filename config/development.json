@@ -7,7 +7,7 @@
 		"devdocs": true,
 		"marketing": true,
 		"onboarding": true,
-		"rule-based-inbox-notes": true,
+		"remote-inbox-notifications": true,
 		"shipping-label-banner": true,
 		"store-alerts": true,
 		"wcpay": true
