@@ -410,12 +410,12 @@ class TaskDashboard extends Component {
 
 export default compose(
 	withSelect( ( select, props ) => {
-		const { getProfileItems, getOptions } = select(
-			'wc-api'
-		);
-		const { getActivePlugins, getInstalledPlugins, isJetpackConnected } = select(
-			PLUGINS_STORE_NAME
-		);
+		const { getProfileItems, getOptions } = select( 'wc-api' );
+		const {
+			getActivePlugins,
+			getInstalledPlugins,
+			isJetpackConnected,
+		} = select( PLUGINS_STORE_NAME );
 		const profileItems = getProfileItems();
 
 		const options = getOptions( [
@@ -442,10 +442,12 @@ export default compose(
 			[ 'woocommerce_task_list_tracked_completed_tasks' ],
 			[]
 		);
+		const installedPlugins = getInstalledPlugins();
 		const tasks = getAllTasks( {
 			profileItems,
 			options: getOptions( [ 'woocommerce_task_list_payments' ] ),
 			query: props.query,
+			installedPlugins,
 		} );
 		const completedTaskKeys = tasks
 			.filter( ( task ) => task.completed )
@@ -454,7 +456,6 @@ export default compose(
 			( task ) => task.visible && ! task.completed
 		);
 		const activePlugins = getActivePlugins();
-		const installedPlugins = getInstalledPlugins();
 
 		return {
 			modalDismissed,
