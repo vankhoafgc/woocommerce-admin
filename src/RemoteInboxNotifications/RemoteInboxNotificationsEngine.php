@@ -12,11 +12,11 @@ defined( 'ABSPATH' ) || exit;
 use \Automattic\WooCommerce\Admin\PluginsProvider\PluginsProvider;
 
 /**
- * RemoteInboxNotifications engine.
+ * Remote Inbox Notifications engine.
  * This goes through the specs and runs (creates admin notes) for those
  * specs that are able to be triggered.
  */
-class RindsEngine {
+class RemoteInboxNotificationsEngine {
 	const SPECS_OPTION_NAME = 'wc_remote_inbox_notifications_specs';
 	const DATA_OPTION_NAME  = 'wc_remote_inbox_notifications_data';
 
