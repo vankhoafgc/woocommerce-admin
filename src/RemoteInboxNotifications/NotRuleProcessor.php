@@ -26,7 +26,7 @@ class NotRuleProcessor {
 	 * Evaluates the rules in the operand and negates the result.
 	 *
 	 * @param object $rule The specific rule being processed by this rule processor.
-	 * @param object $data RINDS data.
+	 * @param object $data Persistent data.
 	 *
 	 * @return bool The result of the operation.
 	 */

@@ -29,7 +29,7 @@ class EvaluateAndGetStatus {
 	 *
 	 * @param array  $spec           The spec to evaluate.
 	 * @param string $current_status The note's current status.
-	 * @param object $data           RINDS data.
+	 * @param object $data           Persistent data.
 	 *
 	 * @return string The evaluated status.
 	 */

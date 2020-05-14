@@ -1,27 +1,27 @@
 <?php
 /**
- * Rinds data rule processor tests.
+ * Data rule processor tests.
  *
- * @package WooCommerce\Tests\Rinds
+ * @package WooCommerce\Tests\WC_Tests_RemoteInboxNotifications_DataRuleProcessor
  */
 
-use Automattic\WooCommerce\Admin\Rinds\RindsDataRuleProcessor;
-use Automattic\WooCommerce\Admin\Rinds\RuleEvaluator;
+use Automattic\WooCommerce\Admin\RemoteInboxNotifications\DataRuleProcessor;
+use Automattic\WooCommerce\Admin\RemoteInboxNotifications\RuleEvaluator;
 
 /**
- * class WC_Tests_Rinds_RindsDataRuleProcessor
+ * class WC_Tests_RemoteInboxNotifications_DataRuleProcessor
  */
-class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
+class WC_Tests_RemoteInboxNotifications_DataRuleProcessor extends WC_Unit_Test_Case {
 	/**
 	 * Empty $data evaluates to false.
 	 *
 	 * @group fast
 	 */
 	public function test_empty_data_evaluates_to_false() {
-		$processor = new RindsDataRuleProcessor();
+		$processor = new DataRuleProcessor();
 		$rule      = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": true
@@ -40,10 +40,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_no_matching_data_keys_evaluates_to_false() {
-		$processor              = new RindsDataRuleProcessor();
+		$processor              = new DataRuleProcessor();
 		$rule                   = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": true
@@ -63,10 +63,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_unrecognized_operator_fails() {
-		$processor                = new RindsDataRuleProcessor();
+		$processor                = new DataRuleProcessor();
 		$rule                     = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "@@@",
 				"value": true
@@ -86,10 +86,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_matching_data_key_and_equality_op_that_fails_evaluates_to_false() {
-		$processor                = new RindsDataRuleProcessor();
+		$processor                = new DataRuleProcessor();
 		$rule                     = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": true
@@ -109,10 +109,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_matching_data_key_and_equality_op_that_succeeds_evaluates_to_true() {
-		$processor                = new RindsDataRuleProcessor();
+		$processor                = new DataRuleProcessor();
 		$rule                     = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": true
@@ -132,10 +132,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_equality_op_works_with_strings_in_failing_case_evaluates_to_false() {
-		$processor                = new RindsDataRuleProcessor();
+		$processor                = new DataRuleProcessor();
 		$rule                     = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": "yes there are"
@@ -155,10 +155,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_equality_op_works_with_strings_in_passing_case_evaluates_to_true() {
-		$processor                = new RindsDataRuleProcessor();
+		$processor                = new DataRuleProcessor();
 		$rule                     = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": "yes there are"
@@ -178,10 +178,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_equality_op_works_with_integers() {
-		$processor                = new RindsDataRuleProcessor();
+		$processor                = new DataRuleProcessor();
 		$rule                     = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": 123
@@ -201,10 +201,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_equality_op_fails_on_different_types() {
-		$processor                = new RindsDataRuleProcessor();
+		$processor                = new DataRuleProcessor();
 		$rule                     = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "there_are_products",
 				"operation": "=",
 				"value": 123
@@ -224,10 +224,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_less_than_op_fails() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": "<",
 				"value": 100
@@ -247,10 +247,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_less_than_op_passes() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": "<",
 				"value": 100
@@ -270,10 +270,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_greater_than_op_fails() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": ">",
 				"value": 100
@@ -293,10 +293,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_greater_than_op_passes() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": ">",
 				"value": 100
@@ -316,10 +316,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_greater_than_or_equal_op_fails() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": ">=",
 				"value": 100
@@ -339,10 +339,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_greater_than_or_equal_op_passes() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": ">=",
 				"value": 100
@@ -362,10 +362,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_less_than_or_equal_op_fails() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": "<=",
 				"value": 100
@@ -385,10 +385,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_less_than_or_equal_op_passes() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": "<=",
 				"value": 100
@@ -408,10 +408,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_not_equal_op_fails() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": "!=",
 				"value": 100
@@ -431,10 +431,10 @@ class WC_Tests_Rinds_RindsDataRuleProcessor extends WC_Unit_Test_Case {
 	 * @group fast
 	 */
 	public function test_not_equal_op_passes() {
-		$processor           = new RindsDataRuleProcessor();
+		$processor           = new DataRuleProcessor();
 		$rule                = json_decode(
 			'{
-				"type": "rinds_data",
+				"type": "data",
 				"index": "product_count",
 				"operation": "!=",
 				"value": 100
