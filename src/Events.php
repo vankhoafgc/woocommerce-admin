@@ -74,6 +74,7 @@ class Events {
 		WC_Admin_Notes_WooCommerce_Payments::possibly_add_note();
 		WC_Admin_Notes_Marketing::possibly_add_note_intro();
 		WC_Admin_Notes_Giving_Feedback_Notes::add_notes_for_admin_giving_feedback();
+
 		DataSourcePoller::poll_data_sources();
 	}
 }
